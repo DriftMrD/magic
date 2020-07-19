@@ -1,0 +1,11 @@
+<div class="title">
+	<h3>*A long agreement*</h3>
+</div>
+<form name="order_form" method="post" action="{{ @BASE }}/orderForm">
+	<p>I want to use my product with id (a number) 
+	<input type="text" name="pro_own" required> to exchange.</p>
+	<!-- <p>The product I want with id:</p>
+	<input type="text" name="pro_want" required> -->
+	<input type="hidden" name="pro_want" value="{{@wantid}}">
+	<input type="submit" name="submit" value="Submit"/>
+</form>

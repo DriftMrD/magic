@@ -1,0 +1,79 @@
+    	  <!--================Header Menu Area =================-->
+        <header class="main_menu_area">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <!-- <a class="navbar-brand" href="#"><img src="img/logo.png" alt="">
+             </a> -->
+
+                <div class="navbar-brand">
+
+					<form class="search-form" id="search" name="search" method="post" action="{{@BASE }}/searchResult">
+		                <span class="icon ion ion-search"></span>
+		                <input type="text" name="search" class="form-control" placeholder="Search...">
+		            </form>
+				</div>
+
+
+
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active"><a class="nav-link" href="{{@BASE}}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{@BASE}}/community">Community</a></li>
+
+
+
+
+
+                        
+
+
+                        <check if="{{@SESSION.userName=='UNSET'}}">
+                            
+                              <li class="nav-item"><a class="nav-link" href="{{@BASE}}/login">Log in</a></li>
+
+                          </true>
+                          <false>
+                            <li class="nav-item dropdown submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Account
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li class="nav-item"><a class="nav-link" href="{{@BASE}}/account">My Account</a></li>
+                                    
+
+
+<li class="nav-item">
+                                <true>
+                                    <form id="_form" method="post" action="{{@BASE}}/logout">
+                                      <input type="hidden" name="name" value="value" /> 
+                                      <a class="nav-link" onclick="document.getElementById('_form').submit();">Log out</a>
+                                  </form>
+                              </li>
+
+
+                                   <!--  <li class="nav-item"><a class="nav-link" href="#">Log out</a></li> -->
+
+                                </ul>
+                            </li>
+                        </false>
+                    </check>
+                      
+
+
+
+
+
+                        <li class="nav-item"><a class="nav-link" href="{{@BASE}}/help">Help</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--================End Header Menu Area =================-->
+    	
+	

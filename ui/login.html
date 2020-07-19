@@ -1,0 +1,53 @@
+
+
+<div class="container" style="padding-bottom: 97px;padding-top: 93px;">
+
+	<div class="row">
+		<div class="col-lg-8 contact_col" style="margin-bottom: 90px;">
+			<div class="get_in_touch">
+				<div class="section_title">{{ @SESSION.logInMsg }}</div>
+				
+				<div class="contact_form_container">
+					<form id="contact_form" class="contact_form" name="form1" method="post" action="{{ @BASE }}/login">
+
+						<div>
+							<!-- Subject -->
+							<label for="contact_company">User name</label>
+							<input type="text" id="contact_company" class="contact_input" name="uname" placeholder="Please enter your user name" size="50">
+						</div>
+						<div>
+							<!-- Subject -->
+							<label for="contact_company">Password</label>
+							<input id="contact_company" class="contact_input" name="password" type="password" placeholder="Please enter your password" size="50">
+						</div>
+						<!-- <input type="submit" name="Submit" value="Sign Up" />
+ -->
+						<button class="button contact_button"><span>Log in</span></button>
+					</form>
+				</div>
+
+
+			</div>
+		</div>
+
+
+
+		<div class="col-lg-3 offset-xl-1 contact_col">
+			<div class="contact_info">
+
+				<div>
+
+					<div class="section_title">If you do not have an account, please sign up.</div>
+					<div style="margin-top: 46px; ">
+					<a href="{{@BASE}}/signup">
+						<button class="button contact_button"><span>Sign up</span></button>
+					</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+</div>

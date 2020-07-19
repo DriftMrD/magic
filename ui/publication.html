@@ -1,0 +1,78 @@
+<div class="title">
+	<h3>{{@pub_title}}</h3>
+	
+	<p>Poster by {{@pub_user}} (product id: {{@pub_id}})</p>
+	<!--contact info-->
+	<p>Email: {{@email}}</p>
+	<check if="{{@phone}}">
+		<true>
+			<p>Phone: {{@phone}}</p>
+		</true>
+	</check>
+	
+
+	<br>
+	<p>{{@pub_abstract}}</p>
+	<br>
+	<div id="div1">{{@pub_story}}</div>
+</div>
+
+<script>
+	var data = document.getElementById("div1").innerHTML;
+	data = data.replace(/&gt;/g, ">");
+	data = data.replace(/&lt;/g,"<");
+	document.getElementById("div1").innerHTML = data;
+
+</script>
+<!-- {{@pub_story}} -->
+
+<check if="@SESSION.userName=='UNSET'">
+	<true>
+		<p>Log in and submit order form.</p>
+	</true>
+	<false>
+		<check if="{{ @SESSION.userName==@pub_user}}">
+			<false>
+				<check if="{{ @sold=='false'}}">
+					<true>
+						<div class="container">
+							<!-- <a href="{{@BASE}}/orderForm">
+								<button>
+									I want
+								</button>
+							</a> -->
+							<form name="want_form" method="get" action="{{ @BASE }}/orderForm">
+								<input type="submit" name="submit" value="I want"/>
+								<input type="hidden" name="id" value="{{@pub_id}}">
+							</form>
+						</div>
+					</true>
+
+
+				</check>
+				
+			</false>
+			<true>
+				<check if="{{ @sold=='false'}}">
+					<true>
+						<div class="container">
+
+							<form name="Delete_form" method="post" action="{{ @BASE }}/deletePublish">
+								<input type="submit" name="submit" value="Delete"/>
+								<input type="hidden" name="id" value="{{@pub_id}}">
+							</form>
+							<form name="Edit_form" method="get" action="{{ @BASE }}/publish">
+								<input type="submit" name="submit" value="Edit"/>
+								<input type="hidden" name="id" value="{{@pub_id}}">
+							</form>
+							
+						</div>
+					</true>
+				</check>
+			</true>
+		</check>
+	</false>
+</check>
+
+
+

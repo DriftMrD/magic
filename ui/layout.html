@@ -1,0 +1,65 @@
+	<!DOCTYPE html>
+	<html lang="en">
+	<include href="head.html" />
+
+	<body>
+		<include href="header.html" />
+
+		<!-- check if home -->
+		<check if="{{ @html_title=='Home' }}">
+			<true>
+				<include href="banner1.html" />
+			</true>
+			<false>
+				<include href="banner2.html" />
+			</false>
+		</check>
+		<!-- end check-->
+		
+		<include href="{{ @content }}" />
+
+
+		<include href="footer.html"/>
+
+		<!-- <script src="{{@BASE}}/ui/js/jquery-3.2.1.min.js"></script>
+		<script src="{{@BASE}}/ui/js/theme.js"></script>
+		<script src="{{@BASE}}/ui/js/popper.min.js"></script>
+		<script src="{{@BASE}}/ui/js/bootstrap.min.js"></script>
+
+		<script src="{{@BASE}}/ui/js/jquery.counterup.min.js"></script> 
+        <script src="{{@BASE}}/ui/js/imagesloaded.pkgd.min.js"></script>
+        <script src="{{@BASE}}/ui/js/plugins.js"></script> -->
+
+
+                
+        <script src="{{@BASE}}/ui/js/jquery-3.2.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files a{{@BASE}}/ui/s needed -->
+        <script src="{{@BASE}}/ui/js/popper.min.js"></script>
+        <script src="{{@BASE}}/ui/js/bootstrap.min.js"></script>
+        <!-- Rev slider js -->
+        <script src="{{@BASE}}/ui/vendors/revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/revolution/js/jquery.themepunch.revolution.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/revolution/js/extensions/revolution.extension.video.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <!-- Extra plugin css -->
+        <script src="{{@BASE}}/ui/vendors/counterup/jquery.waypoints.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/counterup/jquery.counterup.min.js"></script> 
+        <script src="{{@BASE}}/ui/vendors/counterup/apear.js"></script>
+        <script src="{{@BASE}}/ui/vendors/counterup/countto.js"></script>
+        <script src="{{@BASE}}/ui/vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/magnify-popup/jquery.magnific-popup.min.js"></script>
+        <script src="{{@BASE}}/ui/js/smoothscroll.js"></script>
+        <script src="{{@BASE}}/ui/vendors/circle-bar/circle-progress.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/circle-bar/plugins.js"></script>
+        <script src="{{@BASE}}/ui/vendors/isotope/imagesloaded.pkgd.min.js"></script>
+        <script src="{{@BASE}}/ui/vendors/isotope/isotope.pkgd.min.js"></script>
+        
+        <script src="{{@BASE}}/ui/js/circle-active.js"></script>
+        <script src="{{@BASE}}/ui/js/theme.js"></script>
+
+	</body>
+	</html>

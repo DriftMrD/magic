@@ -1,0 +1,47 @@
+
+<check if="{{ @user==@SESSION.userName }}">
+  <true>
+    <div class="container services">
+      <h3>My Publish</h3>
+      <p class="dummy-text">You have {{@numberOfMyPub}} publish.</p>
+
+    </div>
+  </true>
+</check>
+<!-- show my publish-->
+
+
+<div class="container" style="padding-bottom: 90px; ">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto" style="padding-right: 20px;padding-left: 20px;">
+
+     <repeat group="{{ @div }}" key="{{ @ikey }}" value="{{ @idiv }}">
+
+      <div class="post-preview">
+        <a href="{{@BASE}}/publication/{{@idiv['productid']}}">
+          <h2 class="post-title" style="color: #6B8FA8 ;margin: 20px 0;">
+            {{ @idiv['title'] }}
+          </h2>
+          <h3 class="post-subtitle" style="color: #999">
+            {{ @idiv['abstract'] }}
+          </h3>
+        </a>
+      </div>
+      <hr>
+
+    </repeat>
+
+  </div>
+</div>
+</div>
+
+
+
+
+<check if="{{ @user==@SESSION.userName }}">
+  <true>
+    <div class="title"><a href="{{@BASE}}/publish"><button>
+  Publish
+</button></a></div>
+  </true>
+</check>

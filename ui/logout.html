@@ -1,0 +1,22 @@
+<div class="container">
+		<div class="row">
+			<div class="col">
+
+				<!-- Product Sorting -->
+				<div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
+
+					<div class=" ml-md-auto" style="display: flex; padding-top: 30px;">
+
+						<div class="section_title" style="margin-top: 20px;">Logged in as {{ @SESSION.userName }}.</div>
+						<div style="margin-left: 20px;">
+							<form method="post" action="{{ @BASE }}/logout">
+								<!-- <input type="submit" name="submit" value="Logout"> -->
+								<button class="button contact_button"><span>Logout</span></button>
+							</form>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

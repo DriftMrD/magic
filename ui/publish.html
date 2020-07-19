@@ -1,0 +1,221 @@
+<!-- Start Align Area -->
+<div class="whole-wrap">
+	<div class="container">
+
+
+		<div class="section-top-border">
+			<form name="publish_form" method="post" action="{{ @BASE }}/publish" enctype="multipart/form-data" onsubmit="return x(this)">
+				<div class="row">
+
+					<div class="col-lg-8 col-md-8">
+						<h3 class="mb-30">Enter your story</h3>
+
+						<div class="mt-10">
+							<input type="text" name="title" placeholder="Product name" value="{{@ptitle}}" required>
+						</div>
+						<div class="mt-10">
+							<textarea name="abstract" placeholder="Short Introduction" required>{{@pabstract}}</textarea>
+						</div>
+						<div id="div1" class="mt-10">
+
+							<check if="{{@pid}}">
+								<true>{{@pstory}}</true>
+								<false><p>Input your Story</p></false>
+							</check>
+							
+						</div>
+
+						<input id="text1" type="hidden" name="story" value="">
+						
+					</div>
+					<div class="col-lg-3 col-md-4 mt-sm-30 element-wrap">
+						<div class="single-element-widget">
+							<h3 class="mb-30">Select a community</h3>
+							<div>
+								<label><input id="btno" name="community" type="radio" value="" /> 						
+									<input type="text" name="community_name" id="in" placeholder="Create a community"  disabled="disabled"  >	<br>
+									<p id="alert_enter" style="display: none">*Please enter a community.</p>
+								</label>
+
+
+								<check if="{{@pcommunity}}">
+									<true>
+										<input id="btn" name="community" type="radio" value="" checked />
+										<label>
+											<select id="sel" name="sel_community">
+
+												<repeat group="{{ @div }}" key="{{ @ikey }}" value="{{ @idiv }}">
+
+													<check if="{{@idiv['community']==@pcommunity}}">
+														<true>
+															<option selected="selected" value="{{@idiv['community']}}">{{@idiv['community']}}</option>
+														</true>
+														<false>
+															<option value="{{@idiv['community']}}">{{@idiv['community']}}</option>
+														</false>
+													</check>
+
+													
+												</repeat>
+
+											</select>
+										</label> 
+									</true>
+									<false>
+										<input id="btn" name="community" type="radio" value="" />
+										<label>
+											<select id="sel" name="sel_community" disabled="">
+
+												<repeat group="{{ @div }}" key="{{ @ikey }}" value="{{ @idiv }}">
+													<option value="{{@idiv['community']}}">{{@idiv['community']}}</option>
+												</repeat>
+
+											</select>
+										</label> 
+									</false>
+								</check>
+
+								
+								<p id="alert_select" style="display: none">*Please select a community.</p>
+							</div>
+
+							<h3 class="mb-30">Enter your contact details:</h3>
+							<div>
+								E-mail: <input id="email" type="text" name="email" value="{{@pemail}}" required>
+								<p id="alert_email" style="display: none">*Invaild email.</p>
+								Phone: <input id="phone" type="text" name="phone" placeholder="0440XXXXXXXXXX" value="{{@pphone}}">
+								<p id="alert_phone" style="display: none">*Invaild phone number.</p>
+							</div>
+						</div>
+						<input type="submit" name="submit" value="Submit"/>
+						<input id="text2" type="hidden" name="id" value="{{@pid}}">
+					</div>
+
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	var data = document.getElementById("div1").innerHTML;
+	data = data.replace(/&gt;/g, ">");
+	data = data.replace(/&lt;/g,"<");
+	document.getElementById("div1").innerHTML = data;
+
+</script>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="{{@BASE}}/ui/wangEditor-3.1.1/release/wangEditor.min.js"></script>
+<script type="text/javascript">
+
+	var E = window.wangEditor
+	var editor = new E('#div1');
+
+	//menu
+	editor.customConfig.menus = [
+        //'head',
+        'bold',
+        'italic',
+        'underline',
+        'link',
+        'justify',
+        'image',
+        'undo',
+        'redo'
+        ];
+
+        editor.customConfig.lang = {
+        	'设置标题': 'title',
+        	'正文': 'p',
+        	'链接文字': 'link text',
+        	'链接': 'link',
+        	'上传图片': 'upload image',
+        	'上传': 'upload',
+        	'创建': 'init'
+        };
+    //get image url
+    editor.customConfig.linkImgCallback = function (url) {
+    	console.log(url)
+    }
+    editor.customConfig.zIndex = 20;
+    editor.customConfig.uploadImgShowBase64 = true;
+
+    editor.create()
+
+</script>
+<!-- End Align Area -->
+
+
+<script language="javascript" type="text/javascript" charset="utf-8">
+	window.onload = function(){
+		document.getElementById("btn").onclick = function(){
+			document.getElementById('alert_select').style.display='none'
+			document.getElementById('alert_enter').style.display='none'
+			var sel = document.getElementById("sel");
+			sel.disabled = false;
+			var inp = document.getElementById("in");
+			inp.disabled = true;
+
+		}
+
+		document.getElementById("btno").onclick = function(){
+			document.getElementById('alert_select').style.display='none';
+			var sel = document.getElementById("sel");
+			sel.disabled = true;
+			var inp = document.getElementById("in");
+			inp.disabled = false;
+		}
+
+		document.getElementById("email").onclick = function(){
+			document.getElementById('alert_email').style.display='none';
+		}
+
+		document.getElementById("phone").onclick = function(){
+			document.getElementById('alert_phone').style.display='none';
+		}
+
+
+	};
+
+
+	function x(form){
+		document.getElementById('text1').value= editor.txt.html();
+
+		var pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		if(!pattern.test(form.email.value)){
+			document.getElementById('alert_email').style.display='block';
+			return false;
+		}
+		if(form.phone.value.length != 0){
+
+			var pattern = /^[0-9]{14}$/;
+			if(!pattern.test(form.phone.value)){
+				document.getElementById('alert_phone').style.display='block';
+				return false;
+			}
+
+		}
+
+		if(form.title.value==""){
+			alert("Please enter product name.");
+			return false;
+		}
+		else if (form.abstract.value==""){
+			alert("Please enter abstract.");
+			return false;
+		}
+		else if(document.getElementById("btno").checked && form.community_name.value==""){
+			document.getElementById('alert_enter').style.display='block';
+			return false;
+		}else if(!document.getElementById("btno").checked && !document.getElementById("btn").checked){
+			document.getElementById('alert_select').style.display='block'
+			return false;
+		}
+		return true;
+	};
+
+</script>
