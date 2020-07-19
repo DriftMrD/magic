@@ -1,2 +1,2 @@
 # magic
- second hand goods exchange website
+ second-hand goods exchange website
